@@ -1,0 +1,20 @@
+{
+  "name": "meway",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "nodemon ./bin/www"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "crypto": "^1.0.1",
+    "debug": "~2.6.9",
+    "ejs": "~2.6.1",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "mongoose": "^5.9.23",
+    "morgan": "~1.9.1",
+    "nodemon": "^2.0.4",
+    "trek-captcha": "^0.4.0"
+  }
+}
