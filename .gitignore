@@ -72,6 +72,9 @@ typings/
 .env
 .env.test
 
+# 忽略数据库文件
+/db/*
+
 # parcel-bundler cache (https://parceljs.org/)
 .cache
 
