@@ -21,9 +21,6 @@ var save = (data) => {
       console.log(err)
       return false;
     });
-  // return user.save((err,product)=>{
-  //   if(err){ console.log(err); return false }else{ return true }
-  // })
 }
 
 var findLogin = (data) => {
