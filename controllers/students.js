@@ -62,10 +62,32 @@ var singleStudent = async (req, res, next) => {
   }
 }
 
+// 操作删除学生档案
+var deleteStudent = async (req, res, next) => {
+  var { id } = req.body;
+
+  var result = await StudentsModel.deleteStudent(id);
+
+  console.log(result);
+  if(result.deletedCount){
+    res.send({
+      status: 200,
+      msg: '删除成功',
+      data: result
+    })
+  }else{
+    res.send({
+      status: 404,
+      msg: '删除失败',
+      data: {}
+    })
+  }
+}
 
 
 module.exports = {
   saveStudentInfo,
   studentList,
-  singleStudent
+  singleStudent,
+  deleteStudent
 }

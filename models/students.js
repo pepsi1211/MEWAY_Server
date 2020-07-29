@@ -42,8 +42,8 @@ var StudentList = () => {
   return StudentModel.find();
 }
 
-var DeleteStudent = (name) => {
-  return StudentModel.deleteOne({ name });
+var deleteStudent = (id) => {
+  return StudentModel.deleteOne({ _id: id });
 }
 
 var singleStudent = (id) => {
@@ -54,6 +54,6 @@ module.exports = {
   StudentSave,
   StudentList,
   FindStudent,
-  DeleteStudent,
+  deleteStudent,
   singleStudent
 }
