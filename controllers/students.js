@@ -1,6 +1,4 @@
-var { JWT } = require('../untils/config.js');
 var StudentsModel = require('../models/students.js');
-var fs = require('fs');
 
 // 录入学生信息
 var saveStudentInfo = async (req, res, next)=>{
@@ -24,8 +22,50 @@ var saveStudentInfo = async (req, res, next)=>{
   }
 }
 
+// 查看所有学生档案
+var studentList = async (req, res, next) => {
+  var result = await StudentsModel.StudentList();
+  console.log(result);
+  if(result){
+    res.send({
+      status: 200,
+      msg: '查询成功',
+      data: result
+    })
+  }else{
+    res.send({
+      status: 404,
+      msg: '未成功',
+      data: []
+    })
+  }
+}
+
+// 查看单个学生档案
+var singleStudent = async (req, res, next) => {
+  var { id } = req.body;
+
+  var result = await StudentsModel.singleStudent(id);
+
+  if(result){
+    res.send({
+      status: 200,
+      msg: '查询成功',
+      data: result
+    })
+  }else{
+    res.send({
+      status: 404,
+      msg: '未成功',
+      data: {}
+    })
+  }
+}
+
 
 
 module.exports = {
-  saveStudentInfo
+  saveStudentInfo,
+  studentList,
+  singleStudent
 }

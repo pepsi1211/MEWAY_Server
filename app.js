@@ -40,7 +40,6 @@ app.all('/*',(req, res, next)=>{
         return false
       }else{
         // verifyRes = res;
-        console.log(res);
         if(res.phone == phone){
           next();
         }else{
@@ -52,7 +51,6 @@ app.all('/*',(req, res, next)=>{
       }
     })
   }
-
 })
 app.use('/', indexRouter);
 app.use('/api/users', usersRouter);
