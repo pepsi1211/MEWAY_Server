@@ -32,15 +32,16 @@ var JWT = {
   },
   // 验证token
   verifyToken(token) {
+    var outerDecoded = {};
     jwt.verify(token, 'pepsi', (err, decoded)=>{
-      console.log( err );
       if(err){
         // 如果token过期就会执行err代码块
         return err;
       }else{
-        return decoded;
+        outerDecoded = decoded;
       }
     })
+    return outerDecoded;
   }
 }
 

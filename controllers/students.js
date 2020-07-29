@@ -4,10 +4,9 @@ var fs = require('fs');
 
 // 录入学生信息
 var saveStudentInfo = async (req, res, next)=>{
-  // var {  } = req.body
-  // console.log(req.body);
   var data = req.body;
-
+  delete data.token;
+  console.log(data); 
   var result = await StudentsModel.StudentSave(data);
 
   if(result){

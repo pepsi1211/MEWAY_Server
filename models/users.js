@@ -24,7 +24,6 @@ var save = (data) => {
 }
 
 var findLogin = (data) => {
-  // console.log(data)
   return UserModel.findOne(data);
 }
 
