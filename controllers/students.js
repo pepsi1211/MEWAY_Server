@@ -84,10 +84,32 @@ var deleteStudent = async (req, res, next) => {
   }
 }
 
+// 修改学生档案
+var updateStudentInfo = async (req, res, next) => {
+  var { id, data } = req.body;
+  // console.log('controllers层:',id,'data:',data);
+  var result = await StudentsModel.updateStudentInfo(id, data);
+  console.log(result);
+  // if(result){
+  //   res.send({
+  //     status: 200,
+  //     msg: '修改成功',
+  //     data: result
+  //   })
+  // }else{
+  //   res.send({
+  //     status: 404,
+  //     msg: '修改失败',
+  //     data: {}
+  //   })
+  // }
+}
+
 
 module.exports = {
   saveStudentInfo,
   studentList,
   singleStudent,
-  deleteStudent
+  deleteStudent,
+  updateStudentInfo
 }
