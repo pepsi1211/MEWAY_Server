@@ -47,10 +47,7 @@ var singleStudent = (id) => {
 }
 
 var updateStudentInfo = (id,data) => {
-  console.log('updateStudentInfo开始了');
-  var doc = eval('(' + data + ')');
-  console.log('修改后的data类型是:',typeof data);
-  return StudentModel.findOneAndUpdate({_id: id},{$set:doc},{new: true});
+  return StudentModel.findOneAndUpdate({_id: id},{$set:data},{new: true});
 }
 
 module.exports = {
