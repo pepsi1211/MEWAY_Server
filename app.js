@@ -8,6 +8,7 @@ var { Mongoose } = require('./untils/config.js');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var studentsRouter = require('./routes/students');
+var courseController = require('./routes/course');
 var { JWT } = require('./untils/config.js');
 var UserModel = require('./models/users.js');
 
@@ -55,6 +56,7 @@ app.all('/*',(req, res, next)=>{
 app.use('/', indexRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/students', studentsRouter);
+app.use('/api/course', courseController);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
