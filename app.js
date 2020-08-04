@@ -5,10 +5,15 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
 var { Mongoose } = require('./untils/config.js');
+
+// 路由(开始)
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var studentsRouter = require('./routes/students');
-var courseController = require('./routes/course');
+var courseRouter = require('./routes/course');
+var teachersRouter = require('./routes/teachers');
+// 路由(结束)
+
 var { JWT } = require('./untils/config.js');
 var UserModel = require('./models/users.js');
 
@@ -56,7 +61,8 @@ app.all('/*',(req, res, next)=>{
 app.use('/', indexRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/students', studentsRouter);
-app.use('/api/course', courseController);
+app.use('/api/course', courseRouter);
+app.use('/api/teachers', teachersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

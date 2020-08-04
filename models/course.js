@@ -14,6 +14,9 @@ var CourseSchema = new mongoose.Schema({
   }, 
   absent: { type: Boolean, default: true }, // 缺勤是否扣课时 true为扣 false为不扣
   leave: { type: Boolean, default: false }, // 请假是否扣课时 true为扣 false为不扣
+  people: { type: Number, default: 0 }, // 在读学员数
+  is_sale: { type: Boolean, default: false }, // 是否线上销售
+  is_on: { type: Boolean, default: true }, // 是否启用
   remark: String // 备注
 });
 
@@ -37,10 +40,21 @@ var singleCourse = (id) => {
   return CourseModel.findById(id);
 }
 
+// 删除某个课程
+var deleteCourse = (id) => {
+  return CourseModel.deleteOne({ _id: id });
+}
+
+// 修改/更新某个课程
+var updateCourse = (id,data) => {
+  return CourseModel.findOneAndUpdate({_id: id},{$set: data},{new: true});
+}
 
 
 module.exports = {
   courseSave,
   courseList,
-  singleCourse
+  singleCourse,
+  deleteCourse,
+  updateCourse
 }

@@ -60,12 +60,53 @@ var singleCourse = async (req, res, next) => {
   }
 };
 
+// 删除某个课程
+var deleteCourse = async (req, res, next) => {
+  var { id } = req.body;
+
+  var result = await CourseModel.deleteCourse(id);
+
+  if(result){
+    res.send({
+      status: 200,
+      msg: '删除成功',
+      data: result
+    })
+  }else{
+    res.send({
+      status: 404,
+      msg: '删除失败',
+      data: result
+    })
+  }
+}
 
 
+// 修改学生档案
+var updateCourse = async (req, res, next) => {
+  var { id, data } = req.body;
+  data = eval(`(`+data+`)`);
+  var result = await CourseModel.updateCourse(id, data);
+  if(result){
+    res.send({
+      status: 200,
+      msg: '修改成功',
+      data: result
+    })
+  }else{
+    res.send({
+      status: 404,
+      msg: '修改失败',
+      data: {}
+    })
+  }
+}
 
 
 module.exports = {
   saveCourse,
   courseList,
-  singleCourse
+  singleCourse,
+  deleteCourse,
+  updateCourse
 }
