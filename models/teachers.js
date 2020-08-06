@@ -18,28 +18,28 @@ var TeachersSchema = new mongoose.Schema({
 var TeacherModel = mongoose.model('teacher', TeachersSchema);
 TeacherModel.createIndexes();
 
-// 添加课程
+// 添加老师
 var teacherSave = (data) => {
   var teacher = new TeacherModel(data);
   return teacher.save().then(()=>{return true}).catch((err)=>{ console.log(err); return false});
 }
 
-// 查询所有课程
+// 查询所有老师
 var teacherList = () => {
   return TeacherModel.find();
 }
 
-// 查询某个课程
+// 查询某个老师
 var singleTeacher = (id) => {
   return TeacherModel.findById(id);
 }
 
-// 删除某个课程
+// 删除某个老师
 var deleteTeacher = (id) => {
   return TeacherModel.deleteOne({ _id: id });
 }
 
-// 修改/更新某个课程
+// 修改/更新某个老师
 var updateTeacher = (id,data) => {
   return TeacherModel.findOneAndUpdate({_id: id},{$set: data},{new: true});
 }

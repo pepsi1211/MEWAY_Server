@@ -12,6 +12,7 @@ var usersRouter = require('./routes/users');
 var studentsRouter = require('./routes/students');
 var courseRouter = require('./routes/course');
 var teachersRouter = require('./routes/teachers');
+var classesRouter = require('./routes/class');
 // 路由(结束)
 
 var { JWT } = require('./untils/config.js');
@@ -33,11 +34,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.all('/*',(req, res, next)=>{
   console.log('触发了app.all, 通过的url为:',req.url);
+  // console.log('headers: ',req.headers);
   if(req.url == '/api/users/register' || req.url == '/api/users/login'){
     // 如果是注册或者登陆 直接通过,不验证token
     next();
   }else{
-    var { token } = req.body;
+    var token = req.headers.authorization;
     var decoded = JWT.verifyToken(token);
     var { phone } = decoded;
     var result = UserModel.findLogin({phone});
@@ -63,6 +65,7 @@ app.use('/api/users', usersRouter);
 app.use('/api/students', studentsRouter);
 app.use('/api/course', courseRouter);
 app.use('/api/teachers', teachersRouter);
+app.use('/api/class', classesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
