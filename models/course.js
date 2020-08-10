@@ -3,20 +3,20 @@ var mongoose = require('mongoose');
 mongoose.set('useCreateIndex', true);
 
 var CourseSchema = new mongoose.Schema({
-  course_name: { type: String, index: { unique: true } }, // 课程名称
-  one_to_one: { type: Boolean, default: false }, // 是否一对一, false为一对多 true为一对一
+  course_name: { type: String, index: { unique: true } },         // 课程名称
+  one_to_one: { type: Boolean, default: false },                  // 是否一对一, false为一对多 true为一对一
   payment: {
-    way: Boolean, // 是否按课时收费, true为按课时收费 false为按月收费
-    price: Number, // 单价
-    name: String, // 定价标准名称
-    count: Number, // 总课时
-    total: Number // 总价格
+    way: Boolean,                                                 // 是否按课时收费, true为按课时收费 false为按月收费
+    price: Number,                                                // 单价
+    name: String,                                                 // 定价标准名称
+    count: Number,                                                // 总课时
+    total: Number                                                 // 总价格
   }, 
-  absent: { type: Boolean, default: true }, // 缺勤是否扣课时 true为扣 false为不扣
-  leave: { type: Boolean, default: false }, // 请假是否扣课时 true为扣 false为不扣
-  people: { type: Number, default: 0 }, // 在读学员数
-  is_sale: { type: Boolean, default: false }, // 是否线上销售
-  is_on: { type: Boolean, default: true }, // 是否启用
+  absent: { type: Boolean, default: true },                       // 缺勤是否扣课时 true为扣 false为不扣
+  leave: { type: Boolean, default: false },                       // 请假是否扣课时 true为扣 false为不扣
+  people: { type: Number, default: 0 },                           // 在读学员数
+  is_sale: { type: Boolean, default: false },                     // 是否线上销售
+  is_on: { type: Boolean, default: true },                        // 是否启用
   remark: String // 备注
 });
 
