@@ -41,6 +41,13 @@ app.all('/*',(req, res, next)=>{
   }else{
     var token = req.headers.authorization;
     var decoded = JWT.verifyToken(token);
+    if(!decoded.phone){
+      res.send({
+        status: 404,
+        msg: 'token验证不通过'
+      })
+      return;
+    }
     var { phone } = decoded;
     var result = UserModel.findLogin({phone});
     result.select('phone').exec(function(err,res){
@@ -53,7 +60,7 @@ app.all('/*',(req, res, next)=>{
         }else{
           res.send({
             status: 404,
-            msg: '无法验证token,请确保本人操作'
+            msg: '无法验证token,可能已过期'
           })
         }
       }

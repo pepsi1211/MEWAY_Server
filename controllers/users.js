@@ -64,9 +64,16 @@ var register = async (req, res, next) => {
   }
 }
 
-
+// 检测是否登录,token是否过期
+var getUser = async (req, res, next) => {
+  res.send({
+    status: 200,
+    msg: '验证通过'
+  })
+}
 
 module.exports = {
   login,
-  register
+  register,
+  getUser
 }
