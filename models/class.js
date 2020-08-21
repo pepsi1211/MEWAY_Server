@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 mongoose.set('useCreateIndex', true);
 
 var ClassesSchema = new mongoose.Schema({
-  course_name: { type: String, index: { unique: true } }, // 课程名称
+  course_name: { type: String },                          // 课程名称
   class_name: { type: String, index: { unique: true } },  // 班级名称
   capacity: { type: Number, default: 1 },                 // 班级容量
   classroom: { type: String },                            // 上课教室
